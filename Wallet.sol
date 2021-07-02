@@ -92,7 +92,7 @@ contract ERC20Wallet{
         return allowed_eco[fromAcc][toAcc];
     }
     
-    function sendEther(address payable receiver, uint256 numEco) public payable returns (bool){
+    function sendEther(address receiver, uint256 numEco) public returns (bool){
         require(balances_eco[msg.sender] >= (numEco), "A");
         balances_eco[msg.sender] -= numEco;
         balances_eco[receiver] += numEco;
@@ -100,7 +100,7 @@ contract ERC20Wallet{
         return true;
     }
    
-    function getEther(address payable seller, address payable buyer, uint256 numEco) public payable returns (bool) {
+    function getEther(address seller, address buyer, uint256 numEco) public returns (bool) {
         require(balances_eco[seller] >= numEco);
         require(allowed_eco[seller][buyer] >= numEco);
         // require(buyer == msg.sender); // проверка проведения транзакции с адреса получателя
