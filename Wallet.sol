@@ -37,7 +37,7 @@ contract Wallet {
     }
     //Изменить комиссию
     function changeFee(uint newFee) public {
-        require(totalEthAmount <= totalEthAmount/10); //В данном примере комиссия должна быть меньше баланса кошелька в 10 раз
+        require(newFee <= totalEthAmount/10); //В данном примере комиссия должна быть меньше баланса кошелька в 10 раз
         eth_fee = newFee;
     }
     
